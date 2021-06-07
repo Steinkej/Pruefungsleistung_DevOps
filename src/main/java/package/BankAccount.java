@@ -1,4 +1,3 @@
-package BankingAppC;
 public class BankAccount {
     public String owner;
     public String iban;

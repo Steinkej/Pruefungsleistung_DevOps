@@ -1,19 +1,19 @@
 plugins {
-    id 'java'
-}
+    id 'application'}
+mainClassName = 'BankApp'
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+repositories {mavenCentral()}
 
-repositories {
-    mavenCentral()
-}
+dependencies {implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'}
 
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-}
-
-test {
-    useJUnitPlatform()
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'BankApp'
+        )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
