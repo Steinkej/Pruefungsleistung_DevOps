@@ -1,4 +1,5 @@
 package packagePL;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,11 +9,11 @@ public class Application {
     public ArrayList<BankAccount> accounts = new ArrayList<BankAccount>();
 
 
-    public void Action(){
+    public void Action() {
 
         Scanner sc = new Scanner(System.in);
         boolean condition = true;
-        while(condition){
+        while (condition) {
             System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
             System.out.println("|    Sie können die folgenden Befehle benutzen:                                                                              |");
             System.out.println("|    transfer <sourceaccount> <targetaccount> <amount>       |Überweist <amount von <sourceaccount> auf <targetaccount>      |");
@@ -24,7 +25,7 @@ public class Application {
 
             String action = sc.nextLine();
 
-            switch (action){
+            switch (action) {
                 case "transfer":
                     System.out.println("Wie lautet die erste Iban?");
                     String iban1 = sc.nextLine();
@@ -62,7 +63,7 @@ public class Application {
                     System.out.println("Wie lautet ihre Iban?");
                     String ibanbalance = sc.nextLine();
                     System.out.println(Balance(ibanbalance));
-                    
+
                 case "exit":
                     condition = false;
                     break;
@@ -74,19 +75,19 @@ public class Application {
     }
 
     public String Balance(String iban) {
-        for(BankAccount account : accounts){
-            if(account.iban.equals(iban)) {
+        for (BankAccount account : accounts) {
+            if (account.iban.equals(iban)) {
                 return String.valueOf(account.balance);
             }
         }
         return "Iban existiert nicht.";
     }
 
-    public void Transfer(String iban1, String iban2, double amount){
-        for(BankAccount account : accounts){
-            if(account.iban.equals(iban1)){
-                for(BankAccount account2 : accounts){
-                    if(account2.iban.equals(iban2)){
+    public void Transfer(String iban1, String iban2, double amount) {
+        for (BankAccount account : accounts) {
+            if (account.iban.equals(iban1)) {
+                for (BankAccount account2 : accounts) {
+                    if (account2.iban.equals(iban2)) {
                         account.balance -= amount;
                         account2.balance += amount;
 
@@ -94,24 +95,27 @@ public class Application {
                 }
 
             }
-            
+
         }
 
     }
-    public void Withdraw(String iban, double amount){
-        for(BankAccount account : accounts){
-            if(account.iban.equals(iban)){
+
+    public void Withdraw(String iban, double amount) {
+        for (BankAccount account : accounts) {
+            if (account.iban.equals(iban)) {
                 account.balance -= amount;
             }
         }
     }
-    public void Deposit(String iban, double amount){
-        for(BankAccount account : accounts) {
+
+    public void Deposit(String iban, double amount) {
+        for (BankAccount account : accounts) {
             if (account.iban.equals(iban)) {
                 account.balance += amount;
             }
         }
     }
+
     public void CreateAccount(String name, String iban, double balance) {
         BankAccount account = new BankAccount(name, iban, balance);
         accounts.add(account);
