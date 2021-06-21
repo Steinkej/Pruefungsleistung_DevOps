@@ -17,7 +17,7 @@ jar {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
     task Zipping(type: Zip) {
-        from '/'
+        from './'
         include 'build/libs/Pruefungsleistung*.jar'
         include 'build/docs/javadoc/'
         include 'src/'
