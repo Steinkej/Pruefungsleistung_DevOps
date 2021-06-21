@@ -16,11 +16,18 @@ pipeline {
                  }
         }
         stage('Javadoc') {
-                         steps {
-                                sh 'echo "Generating Javadoc..."'
-                                sh 'chmod +x gradlew'
-                                sh './gradlew javadoc'
-                         }
+                  steps {
+                         sh 'echo "Generating Javadoc..."'
+                         sh 'chmod +x gradlew'
+                         sh './gradlew javadoc'
+                  }
+        }
+        stage('Zipping') {
+                          steps {
+                                 sh 'echo "Zipping javadoc, .jar, SourceCode.."'
+                                 sh 'chmod +x gradlew'
+                                 sh './gradlew Zipping'
+                          }
                 }
     }
 }
