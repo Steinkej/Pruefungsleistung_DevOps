@@ -22,6 +22,7 @@ jar {
         include 'build/docs/javadoc/'
         include 'src/'
         archiveName 'Projektordner.zip'
-        destinationDir(file('/'))
+        destinationDir(file('projekt-zipordner/'))
+
     }
 }
