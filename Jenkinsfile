@@ -15,5 +15,12 @@ pipeline {
                         sh './gradlew test'
                  }
         }
+        stage('Javadoc') {
+                         steps {
+                                sh 'echo "Generating Javadoc..."'
+                                sh 'chmod +x gradlew'
+                                sh './gradlew javadoc'
+                         }
+                }
     }
 }
