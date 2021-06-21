@@ -37,7 +37,7 @@ public class Application {
                     System.out.println("Wie lautet die zweite Iban?");
                     String iban2 = sc.nextLine();
                     System.out.println("Wie viel möchten Sie überweisen?");
-                    double amount = sc.nextDouble();
+                    double amount = Double.parseDouble(sc.nextLine());
                     Transfer(iban1, iban2, amount);
                     break;
 
@@ -47,21 +47,21 @@ public class Application {
                     System.out.println("Wie lautet ihre Iban?");
                     String iban = sc.nextLine();
                     System.out.println("Wie hoch ist ihr Startguthaben?");
-                    double balance = sc.nextDouble();
+                    double balance = Double.parseDouble(sc.nextLine());
                     CreateAccount(name, iban, balance);
                     break;
                 case "withdraw":
                     System.out.println("Wie lautet ihre Iban?");
                     String ibanwithdraw = sc.nextLine();
                     System.out.println("Wie viel möchten Sie abheben?");
-                    double amountwithdraw = sc.nextDouble();
+                    double amountwithdraw = Double.parseDouble(sc.nextLine());
                     Withdraw(ibanwithdraw, amountwithdraw);
                     break;
                 case "deposit":
                     System.out.println("Wie lautet ihre Iban?");
                     String ibandeposit = sc.nextLine();
                     System.out.println("Wie viel möchten Sie einzahlen?");
-                    double amountdeposit = sc.nextDouble();
+                    double amountdeposit = Double.parseDouble(sc.nextLine());
                     Deposit(ibandeposit, amountdeposit);
                     break;
                 case "show balance":
