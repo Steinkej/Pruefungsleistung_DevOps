@@ -153,6 +153,7 @@ public class Application {
         for (BankAccount account : accounts) {
             if (account.iban.equals(iban)) {
                 account.kredite.add(new Kredit(Calendar.getInstance().toString(), faelligkeitsDatum, amount, zinssatz));
+                account.balance += amount;
                 bankGuthaben -= amount;
             }
         }
