@@ -70,7 +70,7 @@ public class Application {
                     System.out.println("Wie lautet ihre Iban?");
                     String ibanbalance = sc.nextLine();
                     System.out.println(Balance(ibanbalance));
-
+                    break;
                 case "grantcredit":
                     System.out.println("Wie lautet ihre Iban?");
                     String ibankredit = sc.nextLine();
@@ -81,18 +81,18 @@ public class Application {
                     System.out.println("Wie hoch ist der Zinssatz?");
                     double zinssatz = Double.parseDouble(sc.nextLine());
                     CreateKredit(ibankredit,amountkredit,faelligkeit,zinssatz);
-
+                    break;
                 case "paycredit":
                     System.out.println("Wie lautet ihre Iban?");
                     String ibankreditpayment = sc.nextLine();
                     PayOldestKreditWithInterest(ibankreditpayment);
-
+                    break;
                 case "geldeintreiben":
                     zinsBegleichung();
-
+                    break;
                 case "Bankguthaben anzeigen":
                     System.out.println(bankGuthaben);
-
+                    break;
                 case "exit":
                     condition = false;
                     break;
