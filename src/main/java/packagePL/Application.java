@@ -168,7 +168,7 @@ public class Application {
             }
         }
     }
-    public void zinsBegleichung(){
+    public void zinsBegleichung(){ //individuelle Zinsabrechnung
         for (BankAccount account : accounts) {
             for (Kredit kredit : account.kredite) {
                 account.balance -= kredit.betrag * kredit.zinssatz;
