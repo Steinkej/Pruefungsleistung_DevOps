@@ -1,18 +1,17 @@
 package packagePL;
 
-import java.util.Date;
 
 public class Kredit {
-    public Date vergabeDatum;
-    public Date faelligkeitsDatum;
+    public String vergabeDatum;
+    public String faelligkeitsDatum;
     public double betrag;
-    public int kreditID;
 
 
-    public Kredit(Date vergabeDatum, Date faelligkeitsDatum, double betrag,int kreditID) {
+
+    public Kredit(String vergabeDatum, String faelligkeitsDatum, double betrag) {
         this.vergabeDatum = vergabeDatum;
         this.faelligkeitsDatum = faelligkeitsDatum;
         this.betrag = betrag;
-        this.kreditID = kreditID;
+
     }
 }

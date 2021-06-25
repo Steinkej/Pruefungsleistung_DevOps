@@ -1,8 +1,10 @@
 package packagePL;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Calendar;
 
 /**
  * Test
@@ -12,7 +14,7 @@ import java.util.Scanner;
 public class Application {
 
     public ArrayList<BankAccount> accounts = new ArrayList<BankAccount>();
-
+    public double bankGuthaben;
 
     public void Action() {
 
@@ -124,5 +126,12 @@ public class Application {
     public void CreateAccount(String name, String iban, double balance) {
         BankAccount account = new BankAccount(name, iban, balance);
         accounts.add(account);
+    }
+    public void CreateKredit(String iban, double amount, String faelligkeitsDatum){
+        for (BankAccount account : accounts) {
+            if (account.iban.equals(iban)) {
+                account.kredite.add(new Kredit(Calendar.getInstance().toString(), faelligkeitsDatum, amount));
+            }
+        }
     }
 }
