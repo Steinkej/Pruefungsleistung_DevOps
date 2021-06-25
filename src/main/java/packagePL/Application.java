@@ -71,6 +71,16 @@ public class Application {
                     String ibanbalance = sc.nextLine();
                     System.out.println(Balance(ibanbalance));
 
+                case "grantcredit":
+                    System.out.println("Wie lautet ihre Iban?");
+                    String ibankredit = sc.nextLine();
+                    System.out.println("Wie hoch ist der Kredit?");
+                    String ibankredit = sc.nextLine();
+                    System.out.println("Bis wann ist der Kredit fällig?");
+                    String ibankredit = sc.nextLine();
+                    System.out.println("Wie hoch ist der Zinssatz?");
+                    String ibankredit = sc.nextLine();
+                    //String iban, double amount, String faelligkeitsDatum, double zinssatz
                 case "exit":
                     condition = false;
                     break;
