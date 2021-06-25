@@ -127,10 +127,29 @@ public class Application {
         BankAccount account = new BankAccount(name, iban, balance);
         accounts.add(account);
     }
-    public void CreateKredit(String iban, double amount, String faelligkeitsDatum){
+    public void CreateKredit(String iban, double amount, String faelligkeitsDatum, double zinssatz){
         for (BankAccount account : accounts) {
             if (account.iban.equals(iban)) {
-                account.kredite.add(new Kredit(Calendar.getInstance().toString(), faelligkeitsDatum, amount));
+                account.kredite.add(new Kredit(Calendar.getInstance().toString(), faelligkeitsDatum, amount, zinssatz));
+                bankGuthaben -= amount;
+            }
+        }
+    }
+
+    public void PayOldestKreditMitZins(String iban){
+        for (BankAccount account : accounts) {
+            if (account.iban.equals(iban)) {
+                account.balance -= account.kredite.get(0).betrag + (account.kredite.get(0).betrag * account.kredite.get(0).zinssatz);
+                bankGuthaben += account.kredite.get(0).betrag;
+                account.kredite.remove(0);
+            }
+        }
+    }
+    public void zinsBegleichung(){
+        for (BankAccount account : accounts) {
+            for (Kredit kredit : account.kredite) {
+                account.balance -= kredit.betrag * kredit.zinssatz;
+                bankGuthaben += kredit.betrag * kredit.zinssatz;
             }
         }
     }
