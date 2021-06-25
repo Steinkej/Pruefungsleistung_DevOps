@@ -75,12 +75,24 @@ public class Application {
                     System.out.println("Wie lautet ihre Iban?");
                     String ibankredit = sc.nextLine();
                     System.out.println("Wie hoch ist der Kredit?");
-                    String ibankredit = sc.nextLine();
+                    double amountkredit = Double.parseDouble(sc.nextLine());
                     System.out.println("Bis wann ist der Kredit fällig?");
-                    String ibankredit = sc.nextLine();
+                    String faelligkeit = sc.nextLine();
                     System.out.println("Wie hoch ist der Zinssatz?");
-                    String ibankredit = sc.nextLine();
-                    //String iban, double amount, String faelligkeitsDatum, double zinssatz
+                    double zinssatz = Double.parseDouble(sc.nextLine());
+                    CreateKredit(ibankredit,amountkredit,faelligkeit,zinssatz);
+
+                case "paycredit":
+                    System.out.println("Wie lautet ihre Iban?");
+                    String ibankreditpayment = sc.nextLine();
+                    PayOldestKreditWithInterest(ibankreditpayment);
+
+                case "geldeintreiben":
+                    zinsBegleichung();
+
+                case "Bankguthaben anzeigen":
+                    System.out.println(bankGuthaben);
+
                 case "exit":
                     condition = false;
                     break;
@@ -146,7 +158,7 @@ public class Application {
         }
     }
 
-    public void PayOldestKreditMitZins(String iban){
+    public void PayOldestKreditWithInterest(String iban){
         for (BankAccount account : accounts) {
             if (account.iban.equals(iban)) {
                 account.balance -= account.kredite.get(0).betrag + (account.kredite.get(0).betrag * account.kredite.get(0).zinssatz);
