@@ -36,12 +36,20 @@ pipeline {
                                  sh './gradlew Zipping'
                           }
                 }
+        stage('archiving'){
+                            steps {
+                                sh 'echo "Archiving .jar and javadoc"'
+                                sh 'chmod +x gradlew'
+                                sh './gradlew AutoArchiveUpload'
+                            }
+        }
         stage('Uploading') {
                             steps {
                                 sh 'echo "Uploading .jar and javadoc.."'
                                 sh 'curl -F "file=@bankingArchive.zip" https://file.io/?expires=1w'
                                 }
                             }
+
 
     }
 }
