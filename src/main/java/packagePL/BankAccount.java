@@ -3,7 +3,7 @@ package packagePL;
 import java.util.ArrayList;
 
 /**
- * Klasse, die eine Kontoliste und eine Kreditliste erstellt
+ * Klasse, die eine Kontoliste, eine Kreditliste und ein Konto-Objekt erstellt.
  *
  * @author Gruppe3
  * @version 1.0
