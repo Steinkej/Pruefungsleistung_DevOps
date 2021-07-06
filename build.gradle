@@ -19,7 +19,7 @@ jar {
 }
     task Zipping(type: Zip) {
         from './'
-        include 'build/libs/Pruefungsleistung*.jar'
+        include 'build/libs/Banking_System*.jar'
         include 'build/docs/javadoc/'
         include 'src/'
         archiveName 'Projektordner.zip'

@@ -15,6 +15,13 @@ pipeline {
                         sh './gradlew test'
                  }
         }
+        stage('.jar_Creation'){
+                 steps{
+                        sh 'echo "Creating .jar"'
+                        sh 'chmod +x gradlew'
+                        sh './gradlew BVersion'
+                 }
+        }
         stage('Javadoc') {
                   steps {
                          sh 'echo "Generating Javadoc..."'
