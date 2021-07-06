@@ -10,12 +10,13 @@ dependencies {implementation group: 'org.apache.commons', name: 'commons-lang3',
 jar {
     manifest {
         attributes(
-                'Main-Class': 'BankApp'
+                'Main-Class': 'packagePLprofessional/BankApp'
         )
     }
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-    }
+    } baseName 'Banking_System_Pro_Version'
+}
     task Zipping(type: Zip) {
         from './'
         include 'build/libs/Pruefungsleistung*.jar'
@@ -25,4 +26,22 @@ jar {
         destinationDir(file('./'))
 
     }
-}
+    task BVersion(type: Jar) {
+        manifest {
+            attributes(
+                    'Main-Class': 'packagePLbasic.BankApp'
+            )
+        }
+        from {
+            configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it)}
+        }
+        from {
+            sourceSets.main.output
+        }
+
+        exclude(['packagePLprofessional.**'])
+        baseName 'Banking_System_Basic_Version'
+    }
+    artifacts {
+        archives BVersion
+    }
