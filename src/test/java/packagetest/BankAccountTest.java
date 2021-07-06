@@ -52,6 +52,39 @@ public class BankAccountTest {
         System.out.println("Transfer 2 hat geklappt.");
     }
 
-
+    @Test
+    public void testCreateKredit() {
+        Application app = new Application();
+        ArrayList<BankAccount> accounts = new ArrayList<BankAccount>();
+        app.CreateAccount("test", "1234", 200);
+        app.CreateKredit("1234",300,"14.03.2021",0.05);
+        Assert.assertEquals("500.0", (app.Balance("1234")));
+        //Assert.assertEquals(-300, (app.bankGuthaben));
+        System.out.println("Erstellung von einem Kredit hat geklappt.");
+    }
+    @Test
+    public void testPayOldestKreditWithInterest() {
+        Application app = new Application();
+        ArrayList<BankAccount> accounts = new ArrayList<BankAccount>();
+        app.CreateAccount("test", "1234", 200);
+        app.CreateKredit("1234",300,"14.03.2021",0.05);
+        app.CreateKredit("1234",500,"14.05.2021",0.05);
+        app.PayOldestKreditWithInterest("1234");
+        Assert.assertEquals("685.0", (app.Balance("1234")));
+        //Assert.assertEquals(-485, (app.bankGuthaben));
+        System.out.println("Rückzahlung des ältesten Kredits hat geklappt.");
+    }
+    @Test
+    public void zinsBegleichung() {
+        Application app = new Application();
+        ArrayList<BankAccount> accounts = new ArrayList<BankAccount>();
+        app.CreateAccount("test", "1234", 200);
+        app.CreateKredit("1234",300,"14.03.2021",0.05);
+        app.CreateKredit("1234",500,"14.05.2021",0.05);
+        app.zinsBegleichung();
+        Assert.assertEquals("160.0", (app.Balance("1234")));
+        //Assert.assertEquals(40, (app.bankGuthaben));
+        System.out.println("Rückzahlung aller Kredite hat geklappt.");
+    }
 }
 

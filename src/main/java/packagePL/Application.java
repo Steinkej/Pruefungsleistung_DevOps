@@ -1,8 +1,6 @@
 package packagePL;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 import java.util.Calendar;
 
@@ -23,13 +21,13 @@ public class Application {
         while (condition) {
             System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
             System.out.println("|    Sie können die folgenden Befehle benutzen:                                                                              |");
-            System.out.println("|    transfer <sourceaccount> <targetaccount> <amount>       |Überweist <amount von <sourceaccount> auf <targetaccount>      |");
-            System.out.println("|    deposit <amount> <account>                              |Zahlt <amount> auf <account>                                   |");
-            System.out.println("|    withdraw <amount> <account>                             |Hebt <amount> von <account> ab                                 |");
-            System.out.println("|    createaccount <name>                                    |Erzeugt ein neues Konto und gibt den Namen des Kontos zurück   |");
+            System.out.println("|    transfer        | 1. Iban | 2. Iban | Betrag |          |Überweist den bestimmten Betrag auf ein anderes Konto          |");
+            System.out.println("|    deposit         | Iban    | Betrag  |                   |Zahlt den Betrag auf ihr Konto ein                             |");
+            System.out.println("|    withdraw        | Iban    | Betrag  |                   |Hebt den ausgwählten Betrag von ihrem Konto ab                 |");
+            System.out.println("|    createaccount   | Name    | Iban    | Betrag |          |Erzeugt ein neues Konto mithilfe ihres Namens und einer Iban   |");
+            System.out.println("|    show balance    | Iban    |                             |Zeigt ihr Guthaben an                                          |");
             System.out.println("|    exit                                                    |Um das Programm zu beenden                                     |");
             System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
-
             String action = sc.nextLine();
 
             switch (action) {
@@ -149,12 +147,12 @@ public class Application {
         BankAccount account = new BankAccount(name, iban, balance);
         accounts.add(account);
     }
-    public void CreateKredit(String iban, double amount, String faelligkeitsDatum, double zinssatz){
+    public void CreateKredit(String iban, double betrag, String faelligkeitsDatum, double zinssatz){
         for (BankAccount account : accounts) {
             if (account.iban.equals(iban)) {
-                account.kredite.add(new Kredit(Calendar.getInstance().toString(), faelligkeitsDatum, amount, zinssatz));
-                account.balance += amount;
-                bankGuthaben -= amount;
+                account.kredite.add(new Kredit(Calendar.getInstance().toString(), faelligkeitsDatum, betrag, zinssatz));
+                account.balance += betrag;
+                bankGuthaben -= betrag;
             }
         }
     }
@@ -171,8 +169,8 @@ public class Application {
     public void zinsBegleichung(){ //individuelle Zinsabrechnung
         for (BankAccount account : accounts) {
             for (Kredit kredit : account.kredite) {
-                account.balance -= kredit.betrag * kredit.zinssatz;
-                bankGuthaben += kredit.betrag * kredit.zinssatz;
+                account.balance -= kredit.betrag * kredit.zinssatz + kredit.betrag;
+                bankGuthaben += kredit.betrag * kredit.zinssatz + kredit.betrag;
             }
         }
     }
