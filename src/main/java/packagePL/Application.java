@@ -5,8 +5,15 @@ import java.util.Scanner;
 import java.util.Calendar;
 
 /**
- * Test
- * @author Jon
+ * Klasse, die einen Professional-Banking-Service über ein CLI ermöglicht:
+ * Liest zuerst Texteingaben ein, verbindet diese mit den zugehörigen Methoden und beinhaltet die für
+ * Banking-Services benötigten Methoden.
+ *
+ * @author Gruppe3
+ * @version 1.0
+ * @see java.util.Scanner
+ * @see java.util.ArrayList
+ * @see java.util.Calendar
  */
 
 public class Application {
@@ -14,6 +21,11 @@ public class Application {
     public ArrayList<BankAccount> accounts = new ArrayList<BankAccount>();
     public double bankGuthaben;
 
+    /**
+     * Gibt eine Übersicht der möglichen Befehle aus.
+     * Liest die Befehle von der Kommandozeile ein, leitet durch String Ausgaben die gewünschten Befehle
+     * und verbindet diese, durch switch-cases, mit den Methoden.
+     */
     public void Action() {
 
         Scanner sc = new Scanner(System.in);
@@ -105,6 +117,13 @@ public class Application {
         }
     }
 
+    /**
+     * Gibt das vorhandene Guthaben für das entsprechende Konto an und fängt einen Fehler, bei einer
+     * falschen Iban, mit einem String ab.
+     *
+     * @param iban Iban für die Identifizierung des Kontos.
+     * @return String Wird ausgegeben wenn eine falsche Iban angegeben wird.
+     */
     public String Balance(String iban) {
         for (BankAccount account : accounts) {
             if (account.iban.equals(iban)) {
@@ -114,6 +133,13 @@ public class Application {
         return "Iban existiert nicht.";
     }
 
+    /**
+     * Überträgt mithilfe der jewiligen Ibans einen gewünschten Betrag von einem Konto auf das andere.
+     *
+     * @param iban1 Iban des Kontos von dem abgehoben werden soll.
+     * @param iban2 Iban des Kontos auf das überwiesen werden soll.
+     * @param amount zu überweisender Betrag.
+     */
     public void Transfer(String iban1, String iban2, double amount) {
         for (BankAccount account : accounts) {
             if (account.iban.equals(iban1)) {
@@ -131,6 +157,12 @@ public class Application {
 
     }
 
+    /**
+     * Hebt einen gewünschten Betrag von einem, über die Iban identifizierten, Konto ab.
+     *
+     * @param iban Iban des Kontos von dem abgehoben werden soll.
+     * @param amount Betrag der vom Konto abgehoben werden soll.
+     */
     public void Withdraw(String iban, double amount) {
         for (BankAccount account : accounts) {
             if (account.iban.equals(iban)) {
@@ -139,6 +171,12 @@ public class Application {
         }
     }
 
+    /**
+     * Zahlt den eingebenen Betrag auf das mithilfe der Iban identifizierte Konto ein.
+     *
+     * @param iban Iban des Kontos auf das eingezahlt werden soll.
+     * @param amount einzuzahlender Betrag.
+     */
     public void Deposit(String iban, double amount) {
         for (BankAccount account : accounts) {
             if (account.iban.equals(iban)) {
@@ -147,10 +185,26 @@ public class Application {
         }
     }
 
+    /**
+     * Erstellt ein neues Konto mit gewünschtem Namen, Iban und Startguthaben.
+     *
+     * @param name Name des Besitzers vom Konto.
+     * @param iban gewünschte Iban für das neue Konto.
+     * @param balance gewünschtes Startguthaben für das neue Konto.
+     */
     public void CreateAccount(String name, String iban, double balance) {
         BankAccount account = new BankAccount(name, iban, balance);
         accounts.add(account);
     }
+
+    /**
+     * Gewährleistet einen Kredit mit einem dazugehörigen Fälligkeitsdatum und Zinsatz für das mithilfe der Iban identifizierte Konto.
+     *
+     * @param iban Iban des Kontos für das ein Kredit erstellt werden soll.
+     * @param betrag Betrag/Höhe des Kredits.
+     * @param faelligkeitsDatum Fälligkeitsdatum des Kredits.
+     * @param zinssatz Zinssatz für den Kredit.
+     */
     public void CreateKredit(String iban, double betrag, String faelligkeitsDatum, double zinssatz){
         for (BankAccount account : accounts) {
             if (account.iban.equals(iban)) {
@@ -161,6 +215,11 @@ public class Application {
         }
     }
 
+    /**
+     * Verrechnet die Bezahlung für den ältesten Kredits eines, über die Iban identifizierten, Kontos.
+     *
+     * @param iban Iban des Kontos von dem der Kredit bezahlt werden soll.
+     */
     public void PayOldestKreditWithInterest(String iban){
         for (BankAccount account : accounts) {
             if (account.iban.equals(iban)) {
@@ -170,7 +229,11 @@ public class Application {
             }
         }
     }
-    public void zinsBegleichung(){ //individuelle Zinsabrechnung
+
+    /**
+     * Bezahlt alle Kredite aller Konten.
+     */
+    public void zinsBegleichung(){
         for (BankAccount account : accounts) {
             for (Kredit kredit : account.kredite) {
                 account.balance -= kredit.betrag * kredit.zinssatz + kredit.betrag;
