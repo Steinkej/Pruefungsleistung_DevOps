@@ -3,13 +3,24 @@ package packagetest;
 import org.junit.Assert;
 import org.junit.Test;
 import packagePL.*;
-
 import java.util.ArrayList;
 
-
+/**
+ * Klasse, die die Funktionalitäten der im Banking-Service verwendeten Methoden mithilfe von
+ * junit-Tests(assertEquals) testet.
+ *
+ * @author Gruppe3
+ * @version 1.0
+ * @see java.util.ArrayList
+ * @see org.junit.Test
+ * @see org.junit.Assert
+ */
 public class BankAccountTest {
 
-
+    /**
+     * Überprüft die Funktionalität der Methode Createaccount mithilfe von Balance und gibt ein String aus,
+     * wenn die Funktionalität gegeben ist.
+     */
     @Test
     public void testCreateAccount() {
         Application app = new Application();
@@ -19,6 +30,10 @@ public class BankAccountTest {
         System.out.println("Create Account hat geklappt.");
     }
 
+    /**
+     * Überprüft die Funktionalität der Methode Withdraw mithilfe von Balance und gibt ein String aus,
+     * wenn die Funktionalität gegeben ist.
+     */
     @Test
     public void testWithdraw() {
         Application app = new Application();
@@ -29,6 +44,10 @@ public class BankAccountTest {
         System.out.println("Withdraw hat geklappt.");
     }
 
+    /**
+     * Überprüft die Funktionalität der Methode Deposit mithilfe von Balance und gibt ein String aus,
+     * wenn die Funktionalität gegeben ist.
+     */
     @Test
     public void testDeposit() {
         Application app = new Application();
@@ -39,6 +58,11 @@ public class BankAccountTest {
         System.out.println("Deposit hat geklappt.");
     }
 
+    /**
+     * Überprüft die Funktionalität der Methode Transfer mithilfe von Balance und gibt ein String aus,
+     * wenn die Funktionalität des ersten Transfers gegeben ist und einen weiteren String,
+     * falls der 2. Transfer ebenfalls fehlerfrei ist.
+     */
     @Test
     public void testTransfer() {
         Application app = new Application();
