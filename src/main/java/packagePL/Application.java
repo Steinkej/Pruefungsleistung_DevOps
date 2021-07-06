@@ -19,15 +19,15 @@ public class Application {
         Scanner sc = new Scanner(System.in);
         boolean condition = true;
         while (condition) {
-            System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
-            System.out.println("|    Sie können die folgenden Befehle benutzen:                                                                              |");
-            System.out.println("|    transfer <sourceaccount> <targetaccount> <amount>       |Überweist <amount von <sourceaccount> auf <targetaccount>      |");
-            System.out.println("|    deposit <amount> <account>                              |Zahlt <amount> auf <account>                                   |");
-            System.out.println("|    withdraw <amount> <account>                             |Hebt <amount> von <account> ab                                 |");
-            System.out.println("|    createaccount <name>                                    |Erzeugt ein neues Konto und gibt den Namen des Kontos zurück   |");
-            System.out.println("|    exit                                                    |Um das Programm zu beenden                                     |");
-            System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
-
+            System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
+            System.out.println("|    Sie können die folgenden Befehle benutzen (Wörter einzeln eingeben):                                                                    |");
+            System.out.println("|    transfer          | 1. Iban | 2. Iban    | Betrag     |                   |Überweist den bestimmten Betrag auf ein anderes Konto        |");
+            System.out.println("|    deposit           | Iban    | Betrag     |                                |Zahlt den Betrag auf ihr Konto ein                           |");
+            System.out.println("|    withdraw          | Iban    | Betrag     |                                |Hebt den ausgwählten Betrag von ihrem Konto ab               |");
+            System.out.println("|    createaccount     | Name    | Iban       | Betrag     |                   |Erzeugt ein neues Konto mithilfe ihres Namens und einer Iban |");
+            System.out.println("|    showbalance       | Iban    |                                             |Zeigt ihr Guthaben an                                        |");
+            System.out.println("|    exit                                                                      |Um das Programm zu beenden                                   |");
+            System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------");
             String action = sc.nextLine();
 
             switch (action) {
@@ -64,7 +64,7 @@ public class Application {
                     double amountdeposit = Double.parseDouble(sc.nextLine());
                     Deposit(ibandeposit, amountdeposit);
                     break;
-                case "show balance":
+                case "showbalance":
                     System.out.println("Wie lautet ihre Iban?");
                     String ibanbalance = sc.nextLine();
                     System.out.println(Balance(ibanbalance));
