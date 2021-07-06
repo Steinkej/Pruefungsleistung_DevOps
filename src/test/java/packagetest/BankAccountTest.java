@@ -2,7 +2,7 @@ package packagetest;
 
 import org.junit.Assert;
 import org.junit.Test;
-import packagePL.*;
+import packagePLprofessional.*;
 import java.util.ArrayList;
 
 /**

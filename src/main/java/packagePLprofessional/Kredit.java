@@ -1,4 +1,4 @@
-package packagePL;
+package packagePLprofessional;
 
 /**
  * Klasse, die Kredite als Objekte erstellt.

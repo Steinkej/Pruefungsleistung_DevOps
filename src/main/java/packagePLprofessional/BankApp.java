@@ -1,4 +1,4 @@
-package packagePL;
+package packagePLprofessional;
 
 /**
  * Klasse, die die main Methode für die Ausführung des Banking-Service beinhaltet.
