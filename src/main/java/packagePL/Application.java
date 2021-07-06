@@ -224,7 +224,7 @@ public class Application {
         for (BankAccount account : accounts) {
             if (account.iban.equals(iban)) {
                 account.balance -= account.kredite.get(0).betrag + (account.kredite.get(0).betrag * account.kredite.get(0).zinssatz);
-                bankGuthaben += account.kredite.get(0).betrag;
+                bankGuthaben += account.kredite.get(0).betrag + (account.kredite.get(0).betrag * account.kredite.get(0).zinssatz);
                 account.kredite.remove(0);
             }
         }

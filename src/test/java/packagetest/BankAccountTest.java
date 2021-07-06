@@ -104,7 +104,7 @@ public class BankAccountTest {
         app.CreateKredit("1234",500,"14.05.2021",0.05);
         app.PayOldestKreditWithInterest("1234");
         Assert.assertEquals("685.0", (app.Balance("1234")));
-        //Assert.assertEquals(-485, (app.bankGuthaben));
+        Assert.assertEquals(-485, (app.bankGuthaben),0.0);
         System.out.println("Rückzahlung des ältesten Kredits hat geklappt.");
     }
 
@@ -121,7 +121,7 @@ public class BankAccountTest {
         app.CreateKredit("1234",500,"14.05.2021",0.05);
         app.zinsBegleichung();
         Assert.assertEquals("160.0", (app.Balance("1234")));
-        //Assert.assertEquals(40, (app.bankGuthaben));
+        Assert.assertEquals(40, (app.bankGuthaben),0.0);
         System.out.println("Rückzahlung aller Kredite hat geklappt.");
     }
 }
