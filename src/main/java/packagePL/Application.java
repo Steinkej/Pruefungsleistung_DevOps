@@ -19,15 +19,19 @@ public class Application {
         Scanner sc = new Scanner(System.in);
         boolean condition = true;
         while (condition) {
-            System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
-            System.out.println("|    Sie können die folgenden Befehle benutzen:                                                                              |");
-            System.out.println("|    transfer        | 1. Iban | 2. Iban | Betrag |          |Überweist den bestimmten Betrag auf ein anderes Konto          |");
-            System.out.println("|    deposit         | Iban    | Betrag  |                   |Zahlt den Betrag auf ihr Konto ein                             |");
-            System.out.println("|    withdraw        | Iban    | Betrag  |                   |Hebt den ausgwählten Betrag von ihrem Konto ab                 |");
-            System.out.println("|    createaccount   | Name    | Iban    | Betrag |          |Erzeugt ein neues Konto mithilfe ihres Namens und einer Iban   |");
-            System.out.println("|    show balance    | Iban    |                             |Zeigt ihr Guthaben an                                          |");
-            System.out.println("|    exit                                                    |Um das Programm zu beenden                                     |");
-            System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
+            System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------");
+            System.out.println("|    Sie können die folgenden Befehle benutzen:                                                                                              |");
+            System.out.println("|    transfer          | 1. Iban | 2. Iban    | Betrag     |                   |Überweist den bestimmten Betrag auf ein anderes Konto        |");
+            System.out.println("|    deposit           | Iban    | Betrag     |                                |Zahlt den Betrag auf ihr Konto ein                           |");
+            System.out.println("|    withdraw          | Iban    | Betrag     |                                |Hebt den ausgwählten Betrag von ihrem Konto ab               |");
+            System.out.println("|    createaccount     | Name    | Iban       | Betrag     |                   |Erzeugt ein neues Konto mithilfe ihres Namens und einer Iban |");
+            System.out.println("|    show balance      | Iban    |                                             |Zeigt ihr Guthaben an                                        |");
+            System.out.println("|    grantcredit       | Iban    | Kredithöhe | Fälligkeit | Zinssatz |        |Gewährt einen Kredit                                         |");
+            System.out.println("|    paycredit         | Iban    |                                             |Zahlt den Kredit                                             |");
+            System.out.println("|    collect money     | Iban    |                                             |Führt die Zinsbegleichung durch                              |");
+            System.out.println("|    show bank balance | Iban    |                                             |Zeigt das Guthaben der Bank                                  |");
+            System.out.println("|    exit                                                                      |Um das Programm zu beenden                                   |");
+            System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------");
             String action = sc.nextLine();
 
             switch (action) {
@@ -85,10 +89,10 @@ public class Application {
                     String ibankreditpayment = sc.nextLine();
                     PayOldestKreditWithInterest(ibankreditpayment);
                     break;
-                case "geldeintreiben":
+                case "collect money":
                     zinsBegleichung();
                     break;
-                case "Bankguthaben anzeigen":
+                case "show bank balance":
                     System.out.println(bankGuthaben);
                     break;
                 case "exit":
