@@ -36,5 +36,12 @@ pipeline {
                                  sh './gradlew Zipping'
                           }
                 }
+        stage('Uploading') {
+                            steps {
+                                sh 'echo "Uploading .jar and javadoc.."'
+                                sh 'curl -F "file=@bankingArchive.zip" https://file.io/?expires=1w'
+                                }
+                            }
+
     }
 }

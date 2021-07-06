@@ -45,3 +45,10 @@ jar {
     artifacts {
         archives BVersion
     }
+    task autoArchiveUpload(type: Zip) {
+    from 'build/'
+    include 'libs/Banking_System*.jar'
+    include 'docs/javadoc/**'
+    archiveName 'bankingArchive.zip'
+    destinationDir(file('./'))
+}
