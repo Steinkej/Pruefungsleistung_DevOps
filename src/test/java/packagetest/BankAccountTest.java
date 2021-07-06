@@ -87,7 +87,7 @@ public class BankAccountTest {
         app.CreateAccount("test", "1234", 200);
         app.CreateKredit("1234",300,"14.03.2021",0.05);
         Assert.assertEquals("500.0", (app.Balance("1234")));
-        //Assert.assertEquals(-300, (app.bankGuthaben));
+        Assert.assertEquals(-300, (app.bankGuthaben), 0.0);
         System.out.println("Erstellung von einem Kredit hat geklappt.");
     }
 
